@@ -1,0 +1,52 @@
+x-shared-env: &shared-env
+
+services:
+  database:
+    image: edgedb/edgedb
+    container_name: edgedb
+    restart: always
+    environment:
+      EDGEDB_SERVER_SECURITY: insecure_dev_mode
+      EDGEDB_SERVER_ADMIN_UI: enabled
+      EDGEDB_SERVER_USER: edgedb
+      EDGEDB_SERVER_PASSWORD: edgedb
+    volumes:
+      - "./database/dbschema:/dbschema"
+      - "./database/data:/var/lib/edgedb/data"
+    ports:
+      - "5656:5656"
+    networks:
+      - internal
+
+  elysia:
+    image: oven/bun:alpine
+    container_name: elysia
+    working_dir: /app
+    volumes:
+      - "./server:/app"
+    command: bun run dev
+    ports:
+      - 3001:3001
+    environment:
+      PORT: 3001
+      EDGEDB_DSN: edgedb://edgedb:edgedb@edgedb:5656?tls_security=insecure
+    networks:
+      - internal
+
+  qwik:
+    image: node:22-alpine
+    container_name: qwik
+    working_dir: /app
+    volumes:
+      - "./client:/app"
+    ports:
+      - 5173:5173
+    command: npm run dev -- --host=localhost
+    environment:
+      SERVER_URL: http://localhost:3001
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

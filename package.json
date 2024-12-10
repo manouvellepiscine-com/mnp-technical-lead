@@ -1,8 +1,10 @@
 {
   "scripts": {
     "start": "docker compose up",
-    "edgedb:migration-create": "docker exec -it edgedb edgedb --tls-security=insecure -H localhost migration create --non-interactive",
-    "edgedb:migrate": "docker exec -it edgedb edgedb --tls-security=insecure -H localhost migrate",
-    "edgedb:edgeql-local": "docker exec -it elysia bunx @edgedb/generate edgeql-js --dsn edgedb://edgedb:edgedb@edgedb:5656?tls_security=insecure --target=ts --output-dir=./dbschema"
+    "start.database": "docker compose up database",
+    "edgedb.watch": "edgedb -P 5656 watch",
+    "edgedb.migration.create": "edgedb -P 5656 migration create",
+    "edgedb.migration.apply": "edgedb -P 5656 migrate",
+    "edgedb.generate": "cd backend && bunx @edgedb/generate edgeql-js --dsn edgedb://edgedb:edgedb@localhost:5656?tls_security=insecure --target=ts --output-dir=./dbschema"
   }
 }

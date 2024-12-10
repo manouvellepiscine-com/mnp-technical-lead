@@ -1,5 +1,4 @@
 module default {
-
   abstract type Timestamps {
     required property createdAt -> datetime {
         readonly := true;
@@ -14,19 +13,18 @@ module default {
     index on (.createdAt);
   }
 
+  # Group of tasks
   type List extending Timestamps {
-    required title:str;
+    required title: str;
     
-    multi tasks:Task;
+    multi tasks: Task;
   }
 
-
+  # Individual task
   type Task extending Timestamps  {
-    required title:str;
-    description:str;
+    required title: str;
+    description: str;
 
-    required done: bool {
-      default := false;
-    }
+    required done: bool { default := false }
   }
 }

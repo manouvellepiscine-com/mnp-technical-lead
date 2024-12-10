@@ -1,0 +1,17 @@
+@import url("./fonts.css");
+
+/**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  select,
+  input,
+  button {
+    @apply appearance-none;
+  }
+}

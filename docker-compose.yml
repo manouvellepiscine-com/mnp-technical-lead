@@ -18,13 +18,13 @@ services:
     networks:
       - internal
 
-  elysia:
+  backend:
     image: oven/bun:alpine
-    container_name: elysia
+    container_name: backend
     working_dir: /app
     volumes:
-      - "./server:/app"
-    command: bun run dev
+      - "./backend:/app"
+    command: sh -c "bun i && bun run dev"
     ports:
       - 3001:3001
     environment:
@@ -33,15 +33,15 @@ services:
     networks:
       - internal
 
-  qwik:
+  frontend:
     image: node:22-alpine
-    container_name: qwik
+    container_name: frontend
     working_dir: /app
     volumes:
-      - "./client:/app"
+      - "./frontend:/app"
     ports:
       - 5173:5173
-    command: npm run dev -- --host=localhost
+    command: sh -c "npm i && npm run dev -- --host"
     environment:
       SERVER_URL: http://localhost:3001
     networks:

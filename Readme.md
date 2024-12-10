@@ -11,10 +11,10 @@ Les prérequis pour installer l'application sont les suivants:
 - [Bun](https://bun.sh/docs/installation)
 
 ### Installation
-Pour installer l'application, commencer par forker le repository sur github, puis cloner le repository sur votre machine :
+Pour installer l'application, commencer par cloner le repository sur votre machine :
 
 ```bash
-git clone git@github.com:[username]/[project].git
+git clone git@github.com:manouvellepiscine-com/[project].git
 cd [project]
 ```
 
@@ -58,4 +58,4 @@ L'objectif du test est de réaliser une API RESTful en utilisant EdgeDB. L'API d
 La base de données doit permettre de stocker les listes de tâches et les tâches. Les tâches doivent être rattachées à une liste de tâches.
 
 ## Rendu
-Le rendu du test doit être effectué sous forme de pull request sur le repository d'origine. Le rendu doit contenir le code source de l'application, ainsi que les instructions pour l'installation et l'utilisation de l'application dans un Readme modifié.
+Le rendu du test doit être effectué sous forme de branche sur le repository d'origine. Le rendu doit contenir le code source de l'application, ainsi que les instructions pour l'installation et l'utilisation de l'application dans un Readme modifié si besoin.

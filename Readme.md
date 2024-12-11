@@ -8,6 +8,7 @@ Les prérequis pour installer l'application sont les suivants:
 
 - Docker & Docker compose
 - Node.js et npm
+- [EdgeDB CLI](https://docs.edgedb.com/get-started/cli)
 - [Bun](https://bun.sh/docs/installation)
 
 ### Installation
